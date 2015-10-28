@@ -21,9 +21,9 @@ module.exports = {
       },
 
       configure: function(/*context*/) {
-        this.log('validating config');
+        this.log('validating config', { verbose: true });
         ['deployTag', 'revisionKey'].forEach(this.applyDefaultConfigProperty.bind(this));
-        this.log('config ok');
+        this.log('config ok', { verbose: true });
       },
 
       didDeploy: function(context) {
@@ -34,9 +34,10 @@ module.exports = {
         return new Promise(function(resolve, reject) {
           repo.createTag(tag, function(e) {
             if (e) {
+              _this.log(e, { color: 'red' });
               reject(e);
             } else {
-              _this.log("tagged "+tag);
+              _this.log("tagged "+tag, { verbose: true });
               resolve();
             }
           });
