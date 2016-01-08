@@ -12,9 +12,11 @@ var stubProject = {
 };
 
 var mockCreateTag = function(tag, cb) { cb(); }
+var mockPush = function(remote, branch, flags, cb) { cb();}
 var mockGit = function() {
   return {
-    createTag: mockCreateTag
+    createTag: mockCreateTag,
+    push: mockPush
   };
 };
 
@@ -194,7 +196,8 @@ describe('redis plugin', function() {
         };
 
         var config = {
-          revisionKey: '123abc'
+          revisionKey: '123abc',
+          deployBranch: 'master'
         };
 
         var context = {
