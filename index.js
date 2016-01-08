@@ -34,9 +34,9 @@ module.exports = {
         var _this  = this;
 
         return new Promise(function(resolve, reject) {
-          repo.createTag(tag, function(e) {
-            if (e) {
-              reject(e);
+          repo.createTag(tag, function(error) {
+            if (error) {
+              reject(error);
             } else {
               resolve(repo, tag);
             }
@@ -52,7 +52,7 @@ module.exports = {
             }
           });
         }, function(error) {
-          _this.log(e, { color: 'red' });
+          _this.log(error, { color: 'red' });
         });
       }
     });
