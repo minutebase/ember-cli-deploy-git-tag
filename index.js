@@ -1,4 +1,4 @@
-var Promise          = require('ember-cli/lib/ext/promise');
+var RSVP             = require('rsvp');
 var gitty            = require("gitty");
 var DeployPluginBase = require('ember-cli-deploy-plugin');
 
@@ -31,7 +31,7 @@ module.exports = {
         var repo  = (context._Git || gitty)(".");
         var _this = this;
 
-        return new Promise(function(resolve, reject) {
+        return new RSVP.Promise(function(resolve, reject) {
           repo.createTag(tag, function(e) {
             if (e) {
               _this.log(e, { color: 'red' });
