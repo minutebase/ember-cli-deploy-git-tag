@@ -2,8 +2,10 @@ var RSVP             = require('rsvp');
 var gitty            = require("gitty");
 var DeployPluginBase = require('ember-cli-deploy-plugin');
 
+'use strict';
+
 module.exports = {
-  name: 'ember-cli-deploy-git-tag',
+  name: require('./package').name,
 
   createDeployPlugin: function(options) {
     var DeployPlugin = DeployPluginBase.extend({
